@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       # GET /api/v1/restaurants/:id
       # PATCH /api/v1/restaurants/:id authenticated!!!!
       # POST /api/v1/restaurants authenticated!!!
-      resources :restaurants, only: %I[index show update create]
+      # DELETE /api/v1/restaurants/:id authenticated!!!
+      resources :restaurants, only: %I[index show update create destroy]
     end
   end
 end
