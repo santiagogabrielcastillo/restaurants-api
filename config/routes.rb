@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       # POST /api/v1/restaurants authenticated!!!
       # DELETE /api/v1/restaurants/:id authenticated!!!
       resources :restaurants, only: %I[index show update create destroy]
+
+      resources :restaurants do
+        resources :comments, only: %I[show]
+      end
     end
   end
 end
