@@ -7,7 +7,8 @@ Rails.application.routes.draw do
       # GET /api/v1/restaurants
       # GET /api/v1/restaurants/:id
       # PATCH /api/v1/restaurants/:id authenticated!!!!
-      resources :restaurants, only: %I[index show update]
+      # POST /api/v1/restaurants authenticated!!!
+      resources :restaurants, only: %I[index show update create]
     end
   end
 end
