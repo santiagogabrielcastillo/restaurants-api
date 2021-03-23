@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       # GET /api/v1/restaurants 
-      resources :restaurants, only: [ :index ]
+      resources :restaurants, only: %I[index show]
     end
   end
 end
