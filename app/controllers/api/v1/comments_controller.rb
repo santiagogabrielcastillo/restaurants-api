@@ -5,6 +5,12 @@ class Api::V1::CommentsController < Api::V1::BaseController
     @comment = @restaurant.comments.find(params[:id])
   end
 
+  def index
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @comments = @restaurant.comments
+    authorize @restaurant
+  end
+
   private
 
   def set_restaurant

@@ -5,6 +5,10 @@ class RestaurantPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def show?
     true
   end
@@ -19,5 +23,9 @@ class RestaurantPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  def show_comments?
+    true
   end
 end

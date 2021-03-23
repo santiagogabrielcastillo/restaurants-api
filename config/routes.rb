@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :restaurants, only: %I[index show update create destroy]
 
       resources :restaurants do
-        resources :comments, only: %I[show]
+        resources :comments, only: %I[show index]
       end
     end
   end
