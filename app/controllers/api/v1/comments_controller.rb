@@ -1,7 +1,7 @@
 class Api::V1::CommentsController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: %I[index show]
   before_action :set_restaurant, only: %I[index create]
-  before_action :set_comment, only: %I[show update]
+  before_action :set_comment, only: %I[show update destroy]
 
   def show
   end
@@ -30,6 +30,11 @@ class Api::V1::CommentsController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def destroy
+    @comment.destroy
+    head :no_content
   end
 
   private

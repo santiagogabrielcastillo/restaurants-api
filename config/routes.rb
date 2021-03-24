@@ -16,8 +16,9 @@ Rails.application.routes.draw do
       # GET api/v1/restaurants/:restaurant_id/comments/:id
       # POST api/v1/restaurants/restaurant_id/comments
       # PATCH api/v1/restaurants/:restaurant_id/comments/:id
+      # DELETE api/v1/restaurants/:restaurant_id/comments/:id
       resources :restaurants do
-        resources :comments, only: %I[show index create update]
+        resources :comments, only: %I[show index create update destroy]
       end
     end
   end
