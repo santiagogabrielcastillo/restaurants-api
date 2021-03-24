@@ -1,9 +1,9 @@
 class Api::V1::CommentsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: %I[index show ]
-  before_action :set_restaurant, only: %I[show index create]
+  acts_as_token_authentication_handler_for User, except: %I[index show]
+  before_action :set_restaurant, only: %I[index create]
+  before_action :set_comment, only: %I[show update]
 
   def show
-    @comment = @restaurant.comments.find(params[:id])
   end
 
   def index
@@ -24,11 +24,25 @@ class Api::V1::CommentsController < Api::V1::BaseController
     end
   end
 
+  def update
+    if @comment.update(comment_params)
+      render :show
+    else
+      render_error
+    end
+  end
+
   private
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
-    authorize @restaurant
+    skip_authorization
+  end
+
+  def set_comment
+    set_restaurant
+    @comment = @restaurant.comments.find(params[:id])
+    authorize @comment
   end
 
   def comment_params

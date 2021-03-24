@@ -7,16 +7,17 @@ Rails.application.routes.draw do
       # GET /api/v1/restaurants
       # GET /api/v1/restaurants/:id
       # PATCH /api/v1/restaurants/:id authenticated!!!!
-      # POST /api/v1/restaurants authenticated!!!
+      # POST /api/v1/restaurants
       # DELETE /api/v1/restaurants/:id authenticated!!!
       resources :restaurants, only: %I[index show update create destroy]
 
 
       # GET api/v1/restaurants/:restaurant_id/comments
       # GET api/v1/restaurants/:restaurant_id/comments/:id
-      # POST api/v1/restaurants/restaurant_id authenticated!!!
+      # POST api/v1/restaurants/restaurant_id/comments
+      # PATCH api/v1/restaurants/:restaurant_id/comments/:id
       resources :restaurants do
-        resources :comments, only: %I[show index create]
+        resources :comments, only: %I[show index create update]
       end
     end
   end
