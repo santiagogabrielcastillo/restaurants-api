@@ -7,8 +7,9 @@ class Api::V1::CommentsController < Api::V1::BaseController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @comments = @restaurant.comments
-    authorize @restaurant
+    @comments = policy_scope(Comment)
+    @comments = @comments.where(restaurant_id: @restaurant.id)
+    authorize @comments
   end
 
   private
