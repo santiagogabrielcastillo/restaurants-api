@@ -1,4 +1,4 @@
-** Restaurant API builder **
+**Restaurant API builder**
 
 This is just an exercise for practice how to build an API with Rails 6.0.
 
