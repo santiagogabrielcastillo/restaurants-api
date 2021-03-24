@@ -11,8 +11,12 @@ Rails.application.routes.draw do
       # DELETE /api/v1/restaurants/:id authenticated!!!
       resources :restaurants, only: %I[index show update create destroy]
 
+
+      # GET api/v1/restaurants/:restaurant_id/comments
+      # GET api/v1/restaurants/:restaurant_id/comments/:id
+      # POST api/v1/restaurants/restaurant_id authenticated!!!
       resources :restaurants do
-        resources :comments, only: %I[show index]
+        resources :comments, only: %I[show index create]
       end
     end
   end
